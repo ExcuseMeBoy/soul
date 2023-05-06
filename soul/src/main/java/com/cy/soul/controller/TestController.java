@@ -1,4 +1,4 @@
-package com.cy.soul.controller.TestController;
+package com.cy.soul.controller;
 
 import com.cy.soul.content.AffectiveStrategy;
 import com.cy.soul.content.service.EmoService;
