@@ -7,12 +7,15 @@ import java.nio.file.Paths;
 
 public class FileUtil {
 
-    public static <T> void JSONWriteUtil(String filePath, T t) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        // 将 Java 对象转换为 JSON 格式的字符串
-        String json = mapper.writeValueAsString(t);
-        Files.write(Paths.get(filePath), json.getBytes());
-
+    public static <T> void JSONWriteUtil(String filePath, T t)  {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            // 将 Java 对象转换为 JSON 格式的字符串
+            String json = mapper.writeValueAsString(t);
+            Files.write(Paths.get(filePath), json.getBytes());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

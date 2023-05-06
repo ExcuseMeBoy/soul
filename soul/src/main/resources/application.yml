@@ -4,6 +4,6 @@ server:
     context-path: /soul
 spring:
   config:
-    location: src/main/resources/application.properties
+    location: src/main/resources/application.yml
 emo:
-  filepath: data/start.json
+  filepath: "./soul/src/main/tmp/start.json"

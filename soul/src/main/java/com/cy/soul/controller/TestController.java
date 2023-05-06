@@ -2,6 +2,8 @@ package com.cy.soul.controller;
 
 import com.cy.soul.config.EmoConfig;
 import com.cy.soul.content.AffectiveStrategy;
+import com.cy.soul.entity.Talent;
+import com.cy.soul.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +27,9 @@ public class TestController {
     //初始化模型建立
     @GetMapping("/start")
     public String start() {
+        Talent talent = new Talent();
+        FileUtil.JSONWriteUtil(emoConfig.getFilepath(),new Talent());
+
         System.out.println(emoConfig.getFilepath());
         return null;
     }
