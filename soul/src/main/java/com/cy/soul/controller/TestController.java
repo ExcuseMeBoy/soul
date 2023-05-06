@@ -1,9 +1,8 @@
 package com.cy.soul.controller;
 
+import com.cy.soul.config.EmoConfig;
 import com.cy.soul.content.AffectiveStrategy;
-import com.cy.soul.content.service.EmoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +19,13 @@ public class TestController {
         System.out.println(bigDecimal);
     }
 
+    @Autowired
+    private EmoConfig emoConfig;
 
     //初始化模型建立
     @GetMapping("/start")
     public String start() {
+        System.out.println(emoConfig.getFilepath());
         return null;
     }
 }

@@ -1,0 +1,9 @@
+server:
+  port: 9003
+  servlet:
+    context-path: /soul
+spring:
+  config:
+    location: src/main/resources/application.properties
+emo:
+  filepath: data/start.json

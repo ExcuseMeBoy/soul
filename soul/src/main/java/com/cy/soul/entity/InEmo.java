@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * 输入情绪
+ */
 @Data
 public class InEmo {
 

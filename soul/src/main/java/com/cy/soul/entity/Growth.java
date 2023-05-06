@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * 情绪增长模型
+ */
 @Data
 public class Growth {
 

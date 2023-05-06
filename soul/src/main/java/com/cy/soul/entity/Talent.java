@@ -4,9 +4,11 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * 初始情绪及参数
+ */
 @Data
 public class Talent {
-    private String id;
 
     //初始情绪坐标x
     private BigDecimal emoX;

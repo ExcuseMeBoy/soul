@@ -10,6 +10,17 @@ import java.util.Random;
 
 public class EmoUtil {
 
+
+    public void emoRandomPoint(){
+        // 随机生成一个点
+        BigDecimal x = BigDecimal.valueOf(Math.random()); // x坐标范围为[0, 1)
+        BigDecimal y = BigDecimal.valueOf(Math.random()); // y坐标范围为[0, 1)
+
+        // 根据随机数生成点的坐标
+        BigDecimal pointX = BigDecimal.valueOf(Math.sqrt(x.doubleValue()));
+        BigDecimal pointY = BigDecimal.valueOf(Math.sqrt(y.doubleValue()));
+    }
+
     public static void emoStartUtil() {
         // 随机生成一个点
         BigDecimal x = BigDecimal.valueOf(Math.random()); // x坐标范围为[0, 1)
@@ -59,28 +70,7 @@ public class EmoUtil {
     }
 
 
-    public static <T> void JSONWriteUtil(String filePath, T t) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        // 将 Java 对象转换为 JSON 格式的字符串
-        String json = mapper.writeValueAsString(t);
-        Files.write(Paths.get(filePath), json.getBytes());
 
-
-    }
-
-
-    public static <T> T JSONReadUtil(String filePath, T cls) throws Exception {
-        // 读取文件中的 JSON 数据
-        byte[] fileData = Files.readAllBytes(Paths.get(filePath));
-        ObjectMapper objectMapper = new ObjectMapper();
-        Object o = objectMapper.readValue(fileData, cls.getClass());
-        return (T) o;
-    }
-
-    public static void main(String[] args) throws Exception {
-
-        random();
-    }
 
 
     /**
