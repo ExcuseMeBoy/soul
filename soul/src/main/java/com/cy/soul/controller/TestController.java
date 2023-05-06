@@ -12,11 +12,18 @@ import java.math.BigDecimal;
 @RestController
 public class TestController {
     @Autowired
-   private AffectiveStrategy strategy;
+    private AffectiveStrategy strategy;
 
     @GetMapping("/t")
-    public void test(){
+    public void test() {
         BigDecimal bigDecimal = strategy.strategy("happy").changeEmo(new BigDecimal("0.01"), new BigDecimal("0.01"), new BigDecimal("0.01"));
         System.out.println(bigDecimal);
+    }
+
+
+    //初始化模型建立
+    @GetMapping("/start")
+    public String start() {
+        return null;
     }
 }

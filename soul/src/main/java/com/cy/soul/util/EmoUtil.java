@@ -96,35 +96,34 @@ public class EmoUtil {
     }
 
 
+//    /**
+//     * @param x
+//     * @param y
+//     * @param arg
+//     */
+//    public static void changeEmo(BigDecimal x, BigDecimal y, String arg) {
+//        switch (arg) {
+//            case "top-left":
+//                moveToPoint(x, y, new BigDecimal("0"), new BigDecimal("1"), new BigDecimal("0.1"));
+//                break;
+//            case "top-right":
+//                moveToPoint(x, y, new BigDecimal("1"), new BigDecimal("1"), new BigDecimal("0.1"));
+//                break;
+//            case "bottom-left":
+//                moveToPoint(x, y, new BigDecimal("0"), new BigDecimal("0"), new BigDecimal("0.1"));
+//                break;
+//            case "bottom-right":
+//                moveToPoint(x, y, new BigDecimal("1"), new BigDecimal("0"), new BigDecimal("0.1"));
+//                break;
+//            case "center":
+//                moveToPoint(x, y, new BigDecimal("0.5"), new BigDecimal("0.5"), new BigDecimal("0.1"));
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
-
-    /**
-     * @param x
-     * @param y
-     * @param arg
-     */
-    public static void changeEmo(BigDecimal x, BigDecimal y, String arg) {
-        switch (arg) {
-            case "top-left":
-                moveToPoint(x, y, new BigDecimal("0"), new BigDecimal("1"), new BigDecimal("0.1"));
-                break;
-            case "top-right":
-                moveToPoint(x, y, new BigDecimal("1"), new BigDecimal("1"), new BigDecimal("0.1"));
-                break;
-            case "bottom-left":
-                moveToPoint(x, y, new BigDecimal("0"), new BigDecimal("0"), new BigDecimal("0.1"));
-                break;
-            case "bottom-right":
-                moveToPoint(x, y, new BigDecimal("1"), new BigDecimal("0"), new BigDecimal("0.1"));
-                break;
-            case "center":
-                moveToPoint(x, y, new BigDecimal("0.5"), new BigDecimal("0.5"), new BigDecimal("0.1"));
-                break;
-            default:
-                break;
-        }
-    }
-
+    //当前坐标根据步长移动
     public static void moveToPoint(BigDecimal x, BigDecimal y, BigDecimal targetX, BigDecimal targetY, BigDecimal step) {
         while (x.compareTo(targetX) != 0 || y.compareTo(targetY) != 0) {
             if (x.compareTo(targetX) < 0) {
@@ -189,7 +188,5 @@ public class EmoUtil {
         System.out.println("随机点坐标为：(" + x.setScale(2, RoundingMode.HALF_UP) + ", " + y.setScale(2, RoundingMode.HALF_UP) + ")");
         System.out.println("距离最近的顶点为：" + nearestVertex);
         System.out.println("到中心点的距离为：" + distance(x, y, BigDecimal.valueOf(0.5), BigDecimal.valueOf(0.5)).setScale(2, RoundingMode.HALF_UP));
-
-
     }
 }
