@@ -1,5 +1,6 @@
 package com.cy.soul.util;
 
+import com.cy.soul.entity.response.ResInEmo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.math.BigDecimal;
@@ -11,7 +12,7 @@ import java.util.Random;
 public class EmoUtil {
 
 
-    public void emoRandomPoint(){
+    public static ResInEmo emoRandomPoint() {
         // 随机生成一个点
         BigDecimal x = BigDecimal.valueOf(Math.random()); // x坐标范围为[0, 1)
         BigDecimal y = BigDecimal.valueOf(Math.random()); // y坐标范围为[0, 1)
@@ -19,6 +20,10 @@ public class EmoUtil {
         // 根据随机数生成点的坐标
         BigDecimal pointX = BigDecimal.valueOf(Math.sqrt(x.doubleValue()));
         BigDecimal pointY = BigDecimal.valueOf(Math.sqrt(y.doubleValue()));
+        ResInEmo res = new ResInEmo();
+        res.setEmoX(pointX);
+        res.setEmoY(pointY);
+        return res;
     }
 
     public static void emoStartUtil() {
@@ -68,9 +73,6 @@ public class EmoUtil {
         return BigDecimal.valueOf(Math.sqrt(deltaX.doubleValue() * deltaX.doubleValue()
                 + deltaY.doubleValue() * deltaY.doubleValue()));
     }
-
-
-
 
 
     /**
