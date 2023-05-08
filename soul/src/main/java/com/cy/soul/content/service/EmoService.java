@@ -1,5 +1,7 @@
 package com.cy.soul.content.service;
 
+import com.cy.soul.entity.response.ResInEmo;
+
 import java.math.BigDecimal;
 
 public interface EmoService {
@@ -10,8 +12,8 @@ public interface EmoService {
      * @param EmoVal 移动步长
      * @return
      */
-    default BigDecimal changeEmo(BigDecimal x,BigDecimal y,BigDecimal EmoVal) {
-        return BigDecimal.ZERO;
+    default ResInEmo changeEmo(BigDecimal x, BigDecimal y, BigDecimal EmoVal) {
+        return null;
     }
 
 }

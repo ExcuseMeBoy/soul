@@ -6,4 +6,5 @@ spring:
   config:
     location: src/main/resources/application.yml
 emo:
-  filepath: "./soul/src/main/tmp/start.json"
+  startfilepath: "./soul/src/main/tmp/start.json"
+  growthfilepath: "./soul/src/main/tmp/growth.json"

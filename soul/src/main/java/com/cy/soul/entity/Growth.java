@@ -25,4 +25,23 @@ public class Growth {
     private BigDecimal emoY;
 
 
+    public void setEmo(String tag) {
+        switch (tag) {
+            case "anger":
+                angerActsNum += 1;
+                break;
+            case "cheerful":
+                happyActsNum += 1;
+                break;
+            case "happy":
+                cheerfulActsNum += 1;
+                break;
+            case "sorrow":
+                sorrowActsNum += 1;
+                break;
+            default:
+                break;
+        }
+    }
+
 }

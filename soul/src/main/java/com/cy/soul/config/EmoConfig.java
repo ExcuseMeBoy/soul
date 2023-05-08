@@ -6,5 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties(prefix = "emo")
 public class EmoConfig {
-    private String filepath;
+    private String growthfilepath;
+
+    private String startfilepath;
 }

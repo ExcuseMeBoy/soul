@@ -1,12 +1,10 @@
 package com.cy.soul.util;
 
 import com.cy.soul.entity.response.ResInEmo;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.cy.soul.entity.response.ResInEmoAnswer;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Random;
 
 public class EmoUtil {
@@ -116,7 +114,11 @@ public class EmoUtil {
 //    }
 
     //当前坐标根据步长移动
-    public static void moveToPoint(BigDecimal x, BigDecimal y, BigDecimal targetX, BigDecimal targetY, BigDecimal step) {
+    public static ResInEmo moveToPoint(BigDecimal x, BigDecimal y, BigDecimal targetX, BigDecimal targetY, BigDecimal step) {
+        ResInEmo res = new ResInEmo();
+        res.setEmoY(x.setScale(2, BigDecimal.ROUND_HALF_UP));
+        res.setEmoY(y.setScale(2, BigDecimal.ROUND_HALF_UP));
+
         while (x.compareTo(targetX) != 0 || y.compareTo(targetY) != 0) {
             if (x.compareTo(targetX) < 0) {
                 x = x.add(step).min(targetX);
@@ -129,11 +131,17 @@ public class EmoUtil {
                 y = y.subtract(step).max(targetY);
             }
             System.out.println("点的坐标为：" + x.setScale(2, BigDecimal.ROUND_HALF_UP) + ", " + y.setScale(2, BigDecimal.ROUND_HALF_UP));
+            //
+
+            res.setEmoY(x.setScale(2, BigDecimal.ROUND_HALF_UP));
+            res.setEmoY(y.setScale(2, BigDecimal.ROUND_HALF_UP));
+
         }
+        return res;
     }
 
 
-    public void calculateEmo(BigDecimal x, BigDecimal y) {
+    public static ResInEmoAnswer calculateEmo(BigDecimal x, BigDecimal y) {
         // 计算到各个顶点的距离
         BigDecimal d1 = distance(x, y, BigDecimal.ZERO, BigDecimal.ZERO);
         BigDecimal d2 = distance(x, y, BigDecimal.ONE, BigDecimal.ZERO);
@@ -146,39 +154,45 @@ public class EmoUtil {
         if (d1.compareTo(minDistance) <= 0 || minDistance.compareTo(BigDecimal.ZERO) == 0) {
             if (d1.compareTo(minDistance) < 0 || nearestVertex.isEmpty()) {
                 minDistance = d1;
-                nearestVertex = "a";
+                nearestVertex = "anger";
             } else if (Math.random() < 0.5) {
-                nearestVertex = "a";
+                nearestVertex = "anger";
             }
         }
         if (d2.compareTo(minDistance) <= 0 || minDistance.compareTo(BigDecimal.ZERO) == 0) {
             if (d2.compareTo(minDistance) < 0 || nearestVertex.isEmpty()) {
                 minDistance = d2;
-                nearestVertex = "b";
+                nearestVertex = "calmness";
             } else if (Math.random() < 0.5) {
-                nearestVertex = "b";
+                nearestVertex = "calmness";
             }
         }
         if (d3.compareTo(minDistance) <= 0 || minDistance.compareTo(BigDecimal.ZERO) == 0) {
             if (d3.compareTo(minDistance) < 0 || nearestVertex.isEmpty()) {
                 minDistance = d3;
-                nearestVertex = "c";
+                nearestVertex = "cheerful";
             } else if (Math.random() < 0.5) {
-                nearestVertex = "c";
+                nearestVertex = "cheerful";
             }
         }
         if (d4.compareTo(minDistance) <= 0 || minDistance.compareTo(BigDecimal.ZERO) == 0) {
             if (d4.compareTo(minDistance) < 0 || nearestVertex.isEmpty()) {
                 minDistance = d4;
-                nearestVertex = "d";
+                nearestVertex = "happy";
             } else if (Math.random() < 0.5) {
-                nearestVertex = "d";
+                nearestVertex = "happy";
             }
         }
 
         // 输出结果
         System.out.println("随机点坐标为：(" + x.setScale(2, RoundingMode.HALF_UP) + ", " + y.setScale(2, RoundingMode.HALF_UP) + ")");
         System.out.println("距离最近的顶点为：" + nearestVertex);
-        System.out.println("到中心点的距离为：" + distance(x, y, BigDecimal.valueOf(0.5), BigDecimal.valueOf(0.5)).setScale(2, RoundingMode.HALF_UP));
+        BigDecimal step = distance(x, y, BigDecimal.valueOf(0.5), BigDecimal.valueOf(0.5)).setScale(2, RoundingMode.HALF_UP);
+        System.out.println("到中心点的距离为：" + step);
+
+        ResInEmoAnswer answer = new ResInEmoAnswer();
+        answer.setEmoTag(nearestVertex);
+        answer.setStep(step);
+        return answer;
     }
 }
