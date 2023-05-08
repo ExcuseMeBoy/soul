@@ -19,9 +19,14 @@ public class EmoUtil {
         BigDecimal pointX = BigDecimal.valueOf(Math.sqrt(x.doubleValue()));
         BigDecimal pointY = BigDecimal.valueOf(Math.sqrt(y.doubleValue()));
         ResInEmo res = new ResInEmo();
-        res.setEmoX(pointX);
-        res.setEmoY(pointY);
+        res.setEmoX(pointX.setScale(2, BigDecimal.ROUND_HALF_UP));
+        res.setEmoY(pointY.setScale(2, BigDecimal.ROUND_HALF_UP));
         return res;
+    }
+
+    public static void main(String[] args) {
+        ResInEmo res = emoRandomPoint();
+        System.out.println(res);
     }
 
     public static void emoStartUtil() {
@@ -116,7 +121,7 @@ public class EmoUtil {
     //当前坐标根据步长移动
     public static ResInEmo moveToPoint(BigDecimal x, BigDecimal y, BigDecimal targetX, BigDecimal targetY, BigDecimal step) {
         ResInEmo res = new ResInEmo();
-        res.setEmoY(x.setScale(2, BigDecimal.ROUND_HALF_UP));
+        res.setEmoX(x.setScale(2, BigDecimal.ROUND_HALF_UP));
         res.setEmoY(y.setScale(2, BigDecimal.ROUND_HALF_UP));
 
         while (x.compareTo(targetX) != 0 || y.compareTo(targetY) != 0) {
@@ -133,9 +138,8 @@ public class EmoUtil {
             System.out.println("点的坐标为：" + x.setScale(2, BigDecimal.ROUND_HALF_UP) + ", " + y.setScale(2, BigDecimal.ROUND_HALF_UP));
             //
 
-            res.setEmoY(x.setScale(2, BigDecimal.ROUND_HALF_UP));
+            res.setEmoX(x .setScale(2, BigDecimal.ROUND_HALF_UP));
             res.setEmoY(y.setScale(2, BigDecimal.ROUND_HALF_UP));
-
         }
         return res;
     }

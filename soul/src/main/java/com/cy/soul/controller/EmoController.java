@@ -64,6 +64,7 @@ public class EmoController {
         //当前的情绪值
         ResInEmo res = strategy.strategy(answer.getEmoTag()).changeEmo(growth.getEmoX(), growth.getEmoY(), answer.getStep().multiply(talent.getEmoUpCurvature()));
 
+        System.out.println("返回"+res);
         growth.setEmoX(res.getEmoX());
         growth.setEmoY(res.getEmoY());
         growth.setEmo(answer.getEmoTag());
